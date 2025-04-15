@@ -19,9 +19,10 @@ public class PetSelectionScreen {
         this.pets = new ArrayList<>();
 
         // Добавляем несколько питомцев в список с именем и настроением
-        pets.add(new Pet("Котик", "Счастлив"));
-        pets.add(new Pet("Песик", "Устал"));
+        pets.add(new Pet("Котик", "Счастливый"));
+        pets.add(new Pet("Собака", "Сонливый"));
         pets.add(new Pet("Попугай", "Веселый"));
+
     }
 
     public void show() {

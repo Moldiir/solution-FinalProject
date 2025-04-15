@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 public class MainScreen extends Application {
     @Override
     public void start(Stage primaryStage) {
-        // Создаем главную панель
         StackPane root = new StackPane();
 
         // Кнопка для выбора питомца
@@ -21,8 +20,11 @@ public class MainScreen extends Application {
 
         root.getChildren().add(btnSelectPet);
 
-        // Настроим сцену и показ
+        // Применение стилей
         Scene scene = new Scene(root, 300, 250);
+        scene.getStylesheets().add(getClass().getResource("/styles/styles.css").toExternalForm());
+
+        // Настроим сцену и покажем
         primaryStage.setTitle("Tamagotchi");
         primaryStage.setScene(scene);
         primaryStage.show();
