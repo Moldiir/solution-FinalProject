@@ -1,28 +1,39 @@
 package main.java.model;
 
-public class TiredState implements PetState {
+public class TiredState extends PetState {
+
+    public TiredState(Pet pet) {
+        super(pet);
+    }
+
+    @Override
+    public void handle() {
+        pet.setEnergy(pet.getEnergy() - 10);
+        pet.setMood("Устал");
+        System.out.println(pet.getName() + " чувствует себя " + pet.getMood() + " после игры!");
+    }
+
     @Override
     public void feed(Pet pet) {
-        pet.setEnergy(pet.getEnergy() + 5);  // Restores a little energy
-        pet.setMood("Устал");  // Pet remains tired
-        System.out.println(pet.getName() + " чувствует себя " + pet.getMood() + " после кормления!");
+        pet.setEnergy(pet.getEnergy() + 5);
+        pet.setMood("Устал");
+        System.out.println(pet.getName() + " продолжает чувствовать себя " + pet.getMood() + " после кормления!");
     }
 
     @Override
     public void play(Pet pet) {
-        pet.setEnergy(pet.getEnergy() - 20);  // Playing decreases energy
-        pet.setMood("Сильно устал");  // Pet becomes even more tired
-        System.out.println(pet.getName() + " совсем устал от игры!");
+        pet.setEnergy(pet.getEnergy() - 20);
+        pet.setMood("Сильно устал");
+        System.out.println(pet.getName() + " сильно устал от игры!");
     }
 
     @Override
     public void sleep(Pet pet) {
-        pet.setEnergy(pet.getEnergy() + 50);  // Sleeping restores energy
-        pet.setMood("Отдохнувший");  // Pet feels more rested
+        pet.setEnergy(pet.getEnergy() + 50);
+        pet.setMood("Отдохнувший");
 
-        // If energy reaches max, transition to HappyState
         if (pet.getEnergy() >= 100) {
-            pet.setState(new HappyState(pet));  // Transition to HappyState
+            pet.changeState(new HappyState(pet));
         }
 
         System.out.println(pet.getName() + " отдыхает и восстанавливает силы!");
@@ -30,6 +41,6 @@ public class TiredState implements PetState {
 
     @Override
     public String getMood() {
-        return "Устал";  // Tired mood
+        return "Устал";
     }
 }
