@@ -2,10 +2,11 @@ package main.java.model;
 
 public class Pet {
     private String name;
-    private String mood;
     private int energy;
     private PetState state;
-    // Конструктор
+    private String mood;
+
+
     public Pet(String name, PetState state) {
         this.name = name;
         this.state = state;
@@ -13,14 +14,14 @@ public class Pet {
         this.mood = state.getMood();
     }
 
-
     public void changeState(PetState newState) {
         this.state = newState;
         this.mood = newState.getMood();
     }
 
+
     public void handleState() {
-        state.handle(this);
+        state.handle();
     }
 
 

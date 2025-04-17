@@ -9,6 +9,7 @@ import main.java.model.Pet;
 import main.java.model.HappyState;
 import main.java.model.TiredState;
 import main.java.model.HungryState;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,18 +21,14 @@ public class PetSelectionScreen {
         this.stage = stage;
         this.pets = new ArrayList<>();
 
-        Pet pet1 = new Pet("Котик", new HappyState(null));
-        Pet pet2 = new Pet("Песик", new TiredState());
-        Pet pet3 = new Pet("Попугай", new HungryState(null));
-
-
-        pets.add(pet1);
-        pets.add(pet2);
-        pets.add(pet3);
+        pets.add(new Pet("Котик", new HappyState(null)));
+        pets.add(new Pet("Песик", new TiredState(null)));
+        pets.add(new Pet("Попугай", new HungryState(null)));
     }
 
     public void show() {
         StackPane root = new StackPane();
+
 
         ListView<Pet> petListView = new ListView<>();
         petListView.getItems().addAll(pets);
@@ -51,6 +48,7 @@ public class PetSelectionScreen {
         });
 
         root.getChildren().addAll(petListView, btnSelectPet);
+
 
         Scene scene = new Scene(root, 300, 250);
         scene.getStylesheets().add(getClass().getResource("/styles/styles.css").toExternalForm());
