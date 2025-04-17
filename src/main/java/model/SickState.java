@@ -9,28 +9,28 @@ public class SickState extends PetState {
 
     @Override
     public void handle() {
-        pet.setEnergy(pet.getEnergy() - 5);  // При болезни питомец теряет немного энергии
-        pet.setMood("Болен");  // Питомец чувствует себя больным
+        pet.setEnergy(pet.getEnergy() - 5);
+        pet.setMood("Болен");
         System.out.println(pet.getName() + " чувствует себя " + pet.getMood() + " и теряет немного энергии.");
     }
 
     @Override
     public void feed(Pet pet) {
-        pet.setEnergy(pet.getEnergy() + 10);  // При кормлении питомец восстанавливает немного энергии
+        pet.setEnergy(pet.getEnergy() + 10);
         pet.setMood("Чувствует себя лучше");
         System.out.println(pet.getName() + " чувствует себя лучше после еды!");
     }
 
     @Override
     public void play(Pet pet) {
-        pet.setEnergy(pet.getEnergy() - 15);  // Игра усугубляет болезнь питомца
+        pet.setEnergy(pet.getEnergy() - 15);
         pet.setMood("Болен");
         System.out.println(pet.getName() + " не может играть, потому что болен.");
     }
 
     @Override
     public void sleep(Pet pet) {
-        pet.setEnergy(pet.getEnergy() + 10);  // Сон восстанавливает немного энергии
+        pet.setEnergy(pet.getEnergy() + 10);
         pet.setMood("Болен");
         System.out.println(pet.getName() + " отдыхает, но все еще чувствует себя больным.");
     }

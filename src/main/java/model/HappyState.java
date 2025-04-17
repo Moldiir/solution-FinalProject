@@ -1,9 +1,12 @@
 package main.java.model;
+import main.java.utils.TimerUtil;
+
 
 public class HappyState extends PetState {
 
     public HappyState(Pet pet) {
         super(pet);
+        TimerUtil.startPetTimer(pet); // Запуск таймера при переходе в состояние "Счастлив"
     }
 
     @Override

@@ -1,42 +1,40 @@
 package main.java.model;
 
+import main.java.utils.TimerUtil;
+
 public class TiredState extends PetState {
 
     public TiredState(Pet pet) {
         super(pet);
+        TimerUtil.startPetTimer(pet); // Запуск таймера при переходе в состояние "Устал"
     }
 
     @Override
     public void handle() {
-        pet.setEnergy(pet.getEnergy() - 10);
+        pet.setEnergy(pet.getEnergy() + 10); // Восстановление энергии
         pet.setMood("Устал");
-        System.out.println(pet.getName() + " чувствует себя " + pet.getMood() + " после игры!");
+        System.out.println(pet.getName() + " отдыхает и восстанавливает силы.");
     }
 
     @Override
     public void feed(Pet pet) {
-        pet.setEnergy(pet.getEnergy() + 5);
+        pet.setEnergy(pet.getEnergy() + 5); // Небольшое восстановление энергии
         pet.setMood("Устал");
-        System.out.println(pet.getName() + " продолжает чувствовать себя " + pet.getMood() + " после кормления!");
+        System.out.println(pet.getName() + " поел и немного восстановил силы.");
     }
 
     @Override
     public void play(Pet pet) {
-        pet.setEnergy(pet.getEnergy() - 20);
-        pet.setMood("Сильно устал");
-        System.out.println(pet.getName() + " сильно устал от игры!");
+        pet.setEnergy(pet.getEnergy() - 15); // Потеря энергии из-за игры
+        pet.setMood("Устал");
+        System.out.println(pet.getName() + " играет, но быстро утомляется.");
     }
 
     @Override
     public void sleep(Pet pet) {
-        pet.setEnergy(pet.getEnergy() + 50);
-        pet.setMood("Отдохнувший");
-
-        if (pet.getEnergy() >= 100) {
-            pet.changeState(new HappyState(pet));
-        }
-
-        System.out.println(pet.getName() + " отдыхает и восстанавливает силы!");
+        pet.setEnergy(pet.getEnergy() + 30); // Значительное восстановление энергии
+        pet.setMood("Счастлив");
+        System.out.println(pet.getName() + " спит и восстанавливает силы.");
     }
 
     @Override
