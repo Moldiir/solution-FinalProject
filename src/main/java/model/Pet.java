@@ -1,12 +1,12 @@
 package main.java.model;
 
 public class Pet {
-    private String name;
-    private int energy;
-    private PetState state;
-    private String mood;
+    private String name; // pet name
+    private int energy; // pet energy level
+    private PetState state; // state object for PetState
+    private String mood; // pet mood level
 
-
+    // Pet class construtor
     public Pet(String name, PetState state) {
         this.name = name;
         this.state = state;
